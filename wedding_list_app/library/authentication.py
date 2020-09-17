@@ -53,8 +53,6 @@ def create_owner_data(full_name, auth_file_path, auth_tot):
 
     auth_tot.append(auth_data)
 
-    print(f"qui {auth_tot}")
-
     # here we save by overwriting the file the full auth_tot list created so far
     with open(auth_file_path, "w") as auth_f:
         json.dump(auth_tot, auth_f, indent=1)
@@ -102,8 +100,7 @@ def authentication(user, full_name, auth_tot, auth_file_path):
 
                 return check_pass(user_dict['password'], password)
             else:
-                print(user_dict['owner'])
-                print("I am here")
+
                 create_owner_data(full_name, auth_file_path, auth_tot)
 
         # if the 'user' is the uest, if the authority data are already there, it checks the password provided
@@ -124,8 +121,6 @@ def authentication(user, full_name, auth_tot, auth_file_path):
     else:
 
         if user == "couple":
-
-            print("I am there")
 
             create_owner_data(full_name, auth_file_path, auth_tot)
 

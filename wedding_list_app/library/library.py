@@ -30,7 +30,10 @@ class wedding_list:
                 index: index to create a map for the wed_list
 
                 position: dict to map the list of dicts data structure 'wed_list'
-                _map_product: dict to map the list of dicts data structure available 'products_path'
+                self._map_product: dict to map the list of dicts data structure available 'products_path'
+                self.wed_list: list container of the wedding list data
+                self._list_products: list container of the full products list
+
 
         """
         self.counter = 0
@@ -40,6 +43,8 @@ class wedding_list:
         self.position = {}
         self._map_product = {}
 
+        # check the full paths for the products file and the wedding list file
+
         self.product_path = os.path.join(abs_path, "data", "products.json")
         self.wed_list_path = os.path.join(
             abs_path, "data", full_name + "_wed_list.json")
@@ -48,7 +53,6 @@ class wedding_list:
             self._list_products = json.load(products)
         for idx, product in enumerate(self._list_products):
             self._map_product[product['id']] = idx
-        # print(self._map_product)
 
         try:
             with open(self.wed_list_path, "r") as store_wl:
@@ -66,7 +70,6 @@ class wedding_list:
 
         self.max_len_name = max([len(dict1['name'])
                                  for dict1 in self._list_products])
-        # print(self.max_len_name)
 
     def add_gift(self, id):
         """

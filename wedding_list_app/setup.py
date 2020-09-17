@@ -21,7 +21,15 @@ def add_remove_buy(wed_list, to_do, wed_guest):
         to_do: choice between 2) add; 3) remove; 4) buy gifts from the wedding list
         wed_guest: string with the name of the buyer 
     """
+
     os.system('clear')
+
+    if wed_list == []:
+        print("===========")
+        print(f"Wedding list empty, nothing left to buy!")
+        print(f"Sorry")
+        print("===========")
+        return
 
     if to_do == "2":
         wed_list.list_products()
@@ -87,12 +95,7 @@ def user(aka, auth_tot, dir_absolute_path):
 
         couple_name = wed_couple
 
-    # try:
-    #     with open(auth_file_path, "r") as auth_f:
-    #         auth_tot = json.load(auth_f)
-    # except IOError:
-    #     auth_tot = []
-
+    # let's give to the user three tries before decide if let him/her in ot not
     pass_try = 0
     while check != "q":
 
@@ -108,6 +111,8 @@ def user(aka, auth_tot, dir_absolute_path):
             check = "q"
             status = "q"
 
+    # main loop to let the user choose between different options.
+    # The choice obviously differs depending on the status of th euser: the owner can do much more than the gust(buy and check the list)
     while status != "q":
 
         if aka == "couple":
@@ -132,7 +137,7 @@ def user(aka, auth_tot, dir_absolute_path):
 
                 status = "q"
 
-                wed_list.store_list_to_disk(to_disc='prod')
+                wed_list.store_list_to_disk(to_disc='wed')
 
             elif choice == "1":
 
@@ -226,13 +231,12 @@ def main():
 
     status = "ok"
 
-    # wed_list = wedding_list(dir_absolute_path)
-
     dir_absolute_path = os.path.dirname(os.path.abspath(__file__))
 
     auth_file_path = os.path.join(
         dir_absolute_path, "data", "authentication.json")
 
+    # test if the authentication.json is already available
     try:
         with open(auth_file_path, "r") as auth_f:
             auth_tot = json.load(auth_f)
