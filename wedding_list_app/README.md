@@ -19,9 +19,9 @@ Based on the following list provide of must do:
     - Purchased gifts: each purchased gift with their details.
     - Not purchased gifts: each available gift with their details.
 
-I have created an app in full Python languange that reflects the above list.
+I created an app in full Python languange that reflects the above list.
 
-I have also added the authentication with hashed password for owners and users.
+I also added the authentication with hashed password for owners and users.
 
 The data directory is the place for the storage of:
 
@@ -29,7 +29,7 @@ The data directory is the place for the storage of:
 - authentication login data (authentication.json) updated on the fly
 - wedding list data updated on the fly
 
-main things TO DO:
+Main things TO DO:
 
 1. possibility to change already generated passwords
 
